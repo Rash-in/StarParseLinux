@@ -1,17 +1,16 @@
 # StarParseLinux
 Instructions on installing StarParse on Linux machines using Wine
 
-
-Installing StarParse on a Linux Machine
+##Overview
 
 Requirements:
-Ubuntu or similar debian based variant. (I am not universally knowledgable across distros for variants.)
-Star Wars - The Old Republic (Installed and playable) - Too many other guides out there to do this.
-    (Steam or Lutris)
-Wine 64Bit -  latest-stable (Tested with wine-5.0.3 on Ubuntu 21.10 64bit)
-    sudo apt install wine64
-Winetricks (version 0.0+20210206-2 installed through Ubuntu Software app) 
-    - Version shouldn't matter too much for this as we are using it for a single feature function.
+- Ubuntu or similar debian based variant. (I am not universally knowledgable across distros for variants.)
+- Star Wars - The Old Republic (Installed and playable) - Too many other guides out there to do this.
+-- Steam or Lutris
+- Wine 64Bit -  latest-stable (Tested with wine-5.0.3 on Ubuntu 21.10 64bit)
+-- sudo apt install wine64
+- Winetricks (version 0.0+20210206-2 installed through Ubuntu Software app) 
+-- Version shouldn't matter too much for this as we are using it for a single feature function.
 
 This guide is used to install and orchestrate the use of Ixale's StarParse. A combat log parser for Star Wars - The Old Republic. The intended use of this guide is for folks that migrated over to Linux, installed SWTOR through either steam or lutris. I found myself really missing StarParse in raiding the second I moved over. I built this guide trying to find the simplest way possible to get it up and running. I am sure that there are better ways of doing this. But this was the end result of what I had found at the time. I will be updating this as soon as I improve the method (possibly some scripting).
 
@@ -19,7 +18,7 @@ Additionally, an email was sent to Ixale directly to see if they would be able t
 
 Disclaimer: There is nothing official about this. It is a hackey workaround to get a third party app to function for a 12 year old game. If you break it, the onus is on you to fix it. Be a good 'puter person and make backups just in case. :P
 
-Contents:
+##Contents:
 1) Create Wine Bottle with the necessary file structure and appropriate feature functions
 2) Install Java
 3) Install StarParse: Part 1
