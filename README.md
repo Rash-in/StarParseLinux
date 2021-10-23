@@ -19,13 +19,12 @@ There is nothing official about this. It is a hackey workaround to get a third p
 * Winetricks (version 0.0+20210206-2 installed through Ubuntu Software app) 
   * Version shouldn't matter too much for this as we are using it for a single feature function.
 
-## Contents:
-| Num | Steps |
-| 1 | Create Wine Bottle |
-| 2 | Install Java |
-| 3 | Install StarParse: Part 1 |
-| 4 | Install StarParse: Part 2 |
-| 5 | Finalizing install and final shortcuts. |
+### Contents:
+1)  Create Wine Bottle 
+2)  Install Java 
+3)  Install StarParse: Part 1 
+4)  Install StarParse: Part 2 
+5)  Finalizing install and final shortcuts.
 
 ### 1. Create Wine Bottle
 
