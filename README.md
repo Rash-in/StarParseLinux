@@ -77,24 +77,24 @@ Once you either double click the file or run it with Java (TM) Platform SE Binar
 ### 5) Finalizing install and final shortcuts.
 Now we make another link to the main folder so that we can access the client folder directly. The previous one created is no longer necessary to keep a shortcut for as the main application is further down.  Additionally copy the icon file over to the base folder since it is no longer being used by anything.
 
-* Remove Old Link
-Command: `rm ~/.StarParse/app`
+Remove Old Link
+* Command: `rm ~/.StarParse/app`
 
-* Add New Link
-Command: `ln -s ~/.StarParse/drive_c/users/$USER/Local\ Settings/Application\ Data/StarParse/app/client/app ~/.StarParse/`
+Add New Link
+* Command: `ln -s ~/.StarParse/drive_c/users/$USER/Local\ Settings/Application\ Data/StarParse/app/client/app ~/.StarParse/`
 
-* Get Icon File
-Command: `cp ~/.StarParse/drive_c/users/$USER/Local\ Settings/Application\ Data/StarParse/StarParse.ico ~/.StarParse/`
+Get Icon File
+* Command: `cp ~/.StarParse/drive_c/users/$USER/Local\ Settings/Application\ Data/StarParse/StarParse.ico ~/.StarParse/`
 
-* Getting rid of the java shortcut links installed in your applications directory <-Pet Peeve of mine
-Command: `rm -R ~/.local/share/applications/wine/Programs/Java`
+Getting rid of the java shortcut links installed in your applications directory <-Pet Peeve of mine
+* Command: `rm -R ~/.local/share/applications/wine/Programs/Java`
 
-* Copying StarParse shortcut link to app folder
-Command: `cp ~/.local/share/applications/wine/Programs/Ixale/StarParse.desktop ~/.StarParse`
-Command: `rm -R ~/.local/share/applications/wine/Programs/Ixale`
+Copying StarParse shortcut link to app folder
+* Command: `cp ~/.local/share/applications/wine/Programs/Ixale/StarParse.desktop ~/.StarParse`
+* Command: `rm -R ~/.local/share/applications/wine/Programs/Ixale`
 
-* Using your favorite text editor open ~/StarParse/StarParse.desktop
-Line 3 for exec: replace with this. Then change out where it says USERNAME with your user name
+Using your favorite text editor open ~/StarParse/StarParse.desktop
+* Line 3 for exec: replace with this. Then change out where it says USERNAME with your user name
 
 ```
 Exec=env WINEPREFIX="/home/USERNAME/.StarParse" wine-stable C:\\\\windows\\\\command\\\\start.exe /Unix /home/USERNAME/.StarParse/dosdevices/c:/users/USERNAME/Local\\ Settings/Application\\ Data/StarParse/app/client/app/starparse-client.jar
@@ -102,9 +102,9 @@ Exec=env WINEPREFIX="/home/USERNAME/.StarParse" wine-stable C:\\\\windows\\\\com
 
 Line 7 for Icon: replace with this. Then change out where it says USERNAME with your user name
 
-`Icon=/home/USERNAME/.StarParse/StarParse.ico`
+Line 7 = `Icon=/home/USERNAME/.StarParse/StarParse.ico`
 
-* The overall file will look like this but with USERNAME replaced.
+The overall file will look like this but with USERNAME replaced.
 ```
 [Desktop Entry]
 Name=StarParse
