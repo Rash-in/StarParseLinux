@@ -96,7 +96,9 @@ Command: `rm -R ~/.local/share/applications/wine/Programs/Ixale`
 * Using your favorite text editor open ~/StarParse/StarParse.desktop
 Line 3 for exec: replace with this. Then change out where it says USERNAME with your user name
 
-```Exec=env WINEPREFIX="/home/USERNAME/.StarParse" wine-stable C:\\\\windows\\\\command\\\\start.exe /Unix /home/USERNAME/.StarParse/dosdevices/c:/users/USERNAME/Local\\ Settings/Application\\ Data/StarParse/app/client/app/starparse-client.jar```
+```
+Exec=env WINEPREFIX="/home/USERNAME/.StarParse" wine-stable C:\\\\windows\\\\command\\\\start.exe /Unix /home/USERNAME/.StarParse/dosdevices/c:/users/USERNAME/Local\\ Settings/Application\\ Data/StarParse/app/client/app/starparse-client.jar
+```
 
 Line 7 for Icon: replace with this. Then change out where it says USERNAME with your user name
 
