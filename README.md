@@ -1,7 +1,7 @@
 # StarParseLinux
 Instructions on installing StarParse on Linux machines using Wine
 
-##Overview
+## Overview
 
 Requirements:
 - Ubuntu or similar debian based variant. (I am not universally knowledgable across distros for variants.)
@@ -18,7 +18,7 @@ Additionally, an email was sent to Ixale directly to see if they would be able t
 
 Disclaimer: There is nothing official about this. It is a hackey workaround to get a third party app to function for a 12 year old game. If you break it, the onus is on you to fix it. Be a good 'puter person and make backups just in case. :P
 
-##Contents:
+## Contents:
 1) Create Wine Bottle with the necessary file structure and appropriate feature functions
 2) Install Java
 3) Install StarParse: Part 1
