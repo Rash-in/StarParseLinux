@@ -126,10 +126,8 @@ Command: `cp ~/.StarParse/StarParse.desktop ~/.local/share/applications/`
 
 In StarParse click File -> Settings -> In Log Directory Click Choose and it will open a popup.
 In the popup you are going to navigate to one of two default locations depending on how you installed SWTOR
-
-Lutris default location: `~/Games/Star\ Wars\ -\ The\ Old\ Republic`
-Steam default location: `~/.steam/debian-installation/steamapps/compatdata/1286830/pfx`
-
+* Lutris default location: `~/Games/Star\ Wars\ -\ The\ Old\ Republic`
+* Steam default location: `~/.steam/debian-installation/steamapps/compatdata/1286830/pfx`
 * Open the respective applications either Steam or Lutris and find out where the install locations are if you are unsure. Navigate to them using the StarParse Browse Popup.
 * Once you start to see drive_c it will be the same in both apps. (caveat - steams USERNAME is steamuser, Lutris will be yours specifically)
 
