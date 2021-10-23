@@ -103,7 +103,7 @@ Line 7 for Icon: replace with this. Then change out where it says USERNAME with 
 `Icon=/home/USERNAME/.StarParse/StarParse.ico`
 
 * The overall file will look like this but with USERNAME replaced.
-`
+```
 [Desktop Entry]
 Name=StarParse
 Exec=env WINEPREFIX="/home/USERNAME/.StarParse" wine-stable C:\\\\windows\\\\command\\\\start.exe /Unix /home/USERNAME/.StarParse/dosdevices/c:/users/USERNAME/Local\\ Settings/Application\\ Data/StarParse/app/client/app/starparse-client.jar
@@ -111,7 +111,8 @@ Type=Application
 StartupNotify=true
 Path=/home/USERNAME/.StarParse/dosdevices/c:/users/USERNAME/Local Settings/Application Data/StarParse
 Icon=/home/USERNAME/.StarParse/StarParse.ico
-StartupWMClass=starparse.exe`
+StartupWMClass=starparse.exe
+```
 
 * Once you save this. Right click on the StarParse.desktop file with nautilus/ File explorer and choose Properties -> permissions. Check the box that says: Allow executing file as a Program
 
