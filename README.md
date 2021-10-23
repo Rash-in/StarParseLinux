@@ -7,7 +7,7 @@ This guide is used to install and orchestrate the use of Ixale's StarParse. A co
 * Additionally, an email was sent to Ixale directly to see if they would be able to buld out the Java packages in a linux port since really it shouldn't have any Windows Only dependencies. Hopefully the email didn't get autodeleted :P or thrown in spam. First time emailing so who knows.
 
 ### Disclaimer:
-There is nothing official about this. It is a hackey workaround to get a third party app to function for a 12 year old game. If you break it, the onus is on you to fix it. Be a good 'puter person and make backups just in case. :P
+There is nothing official about this. It is a hackey workaround to get a third party app to function for a 10 year old game. If you break it, the onus is on you to fix it. Be a good 'puter person and make backups just in case. :P
 
 ### Requirements:
 * Ubuntu or similar debian based variant.
