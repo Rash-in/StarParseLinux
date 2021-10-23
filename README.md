@@ -20,12 +20,12 @@ There is nothing official about this. It is a hackey workaround to get a third p
   * Version shouldn't matter too much for this as we are using it for a single feature function.
 
 ## Contents:
-Steps |
-1) Create Wine Bottle with the necessary file structure and appropriate feature functions |
-2) Install Java |
-3) Install StarParse: Part 1 |
-4) Install StarParse: Part 2 |
-5) Finalizing install and final shortcuts. |
+Num | Steps |
+1) | Create Wine Bottle |
+2) | Install Java |
+3) | Install StarParse: Part 1 |
+4) | Install StarParse: Part 2 |
+5) | Finalizing install and final shortcuts. |
 
 ### 1. Create Wine Bottle
 
