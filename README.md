@@ -34,40 +34,54 @@ There is nothing official about this. It is a hackey workaround to get a third p
 ### 1. Create Temporary Wine Bottle & folder structure
 
 Install Wine Bottle:
-* Command: `WINEARCH=win64 WINEPREFIX=~/.StarParse winetricks fontsmooth-rgb`
+* Command: `WINEARCH=win64 WINEPREFIX=~/.StarParse winetricks fontsmooth=rgb`
 
 Move Downloads to appropriate folder
-* Command: `cp ~/Downloads/StarParse-1.0.exe ~/.StarParse/`
-* Command: `mkdir ~/.StarParse/java && cp /home/$USER/Downloads/jre-8u321-linux-x64.tar.gz ~/.StarParse/java && cd ~/.StarParse/java && tar zxvf jre-8u321-linux-x64.tar.gz`
+* Command: `mkdir ~/.StarParse/StarParse && cp ~/Downloads/StarParse-1.0.exe ~/.StarParse/StarParse && cp ~/Downloads/jre-8u321-linux-x64.tar.gz ~/.StarParse/StarParse && cd ~/.StarParse/StarParse && tar zxvf jre-8u321-linux-x64.tar.gz`
 * Note: I am making the Java Runtime local to the app itself for simplicity. Normally Java installs can be made local to the machine meaning all apps can use it. But it is easier for the guide to make it app specific for shortcuts, etc.
 ------------------
 
 ### 2) Install StarParse: Part 1 - Extraction
 Start the installer via Wine.   HUGE NOTE:  This WILL fail. This is an intended result to extract the files from the installer. This is the hackey part of the workaround from this point forward. Once run and got the expected errors you can close out of the java applet that popped up. It should return you to the command prompt when done. If the command prompt is stuck on the System Error, it is safe to press:  ctl+c     in order to force out of the command.
 
-* Command: `WINEPREFIX=~/.StarParse wine ~/.StarParse/StarParse-1.0.exe`
+* Command: `WINEPREFIX=~/.StarParse wine ~/.StarParse/StarParse/StarParse-1.0.exe`
+
+Remove some uneeded files
+* Command: `rm ~/Desktop/StarParse.lnk && rm ~/Desktop/StarParse.desktop`
+
+Move app files from inside wine to our folder
+* Command: `cp -R ~/.StarParse/drive_c/users/$USER/Local\ Settings/Application\ Data/StarParse/* ~/.StarParse/StarParse/`
 ------------------
 
 ### 3) Install StarParse: Part 2 - App Updater & Test Launch
+
 Next we will be running the java app agaist the StarParse app updater to get the current app. You will see the StarParse applet launch and start downloading the update files. NOTE: At the end you will see an error trying to launch the app. This is intended as we will be launching the app seperately.
-* Command: `~/.StarParse/java/jre1.8.0_321/bin/java -jar ~/.StarParse/drive_c/users/$USER/Local\ Settings/Application\ Data/StarParse/app/starparse-launcher.jar`
-
-
-Manually close out of the StarParse applet with the error message. The background terminal will exit back to the prompt. At the end of this, there will be a new folder in `~/.StarParse/java` called `client` which houses the actual application.
-
+* Command: `cd ~/.StarParse/StarParse/app`
+* Command: `~/.StarParse/StarParse/jre1.8.0_321/bin/java -jar starparse-launcher.jar`
+* Manually close out of the StarParse applet with the error message. The background terminal will exit back to the prompt. At the end of this, there will be a new folder in `~/.StarParse/StarParse/app` called `client` which houses the actual application.
 
 Testing launch: At this point StarParse should load. You will see the changelog window pop up and can click through to the main app. YAY!
-* Command: `~/.StarParse/java/jre1.8.0_321/bin/java -jar ~/.StarParse/java/client/app/starparse-client.jar`
+* Command: `cd /home/$USER/.StarParse/StarParse/app/client/app && ~/.StarParse/StarParse/jre1.8.0_321/bin/java -jar starparse-client.jar`
+
+Close down StarParse App and remove the wine bottle we initially setup:
+* Command: `cd ~/.StarParse && rm -rf dosdevices && rm -rf drive_c && rm system.reg && rm user.reg && rm userdef.reg && rm winetricks.log && rm .update-timestamp`
+
 ------------------
 
 ### 4) Finalizing install and final shortcuts. (WIP - Below is still old content that does not apply.)
-First thing to do. Remove Wine Bottle as there is nothing more needed with Wine.
-* Command: `cd ~/.StarParse && rm -rf dosdevices && rm -rf drive_c && rm system.reg && rm user.reg && rm userdef.reg && rm winetricks.log && rm .update-timestamp`
 
-Create `.desktop` file so you have a clickable link to run the app.
-* Command `cd ~/.StarParse && touch StarParse.desktop && chmod +x StarParse.desktop`
+Create files to be able to start and show app.
+* Command: `cd ~/.StarParse && touch StarParse.desktop && touch startStarParse.sh && chmod +x StarParse.desktop && chmod +x startStarParse.sh`
 
-Open `StarParse.desktop` with your favorite text editor and put in data.
+Open `startStarParse.sh` with your favorite text editor and put in data. Then save and exit.:
+```
+#!/bin/bash
+
+cd "/home/$USER/.StarParse/StarParse/app/client/app"
+/.StarParse/StarParse/jre1.8.0_321/bin/java -jar starparse-client.jar
+```
+
+Open `StarParse.desktop` with your favorite text editor and put in data.Then save and exit:
 * Note: Where it has `<user>` you will need to put in your linux user name
 ```
 [Desktop Entry]
@@ -79,7 +93,10 @@ Path=/home/<user>/.StarParse/app/StarParse/client/app/starparse-client.jar
 Icon=/home/<user>/.StarParse/app/StarParse/StarParse.ico
 ```
 
+Copy `StarParse.desktop` file to where OS can read it:
+* Command: `cp ~/.StarParse/StarParse.desktop ~/.local/share/applications`
 
+---------------------------------------------------------------
 Using your favorite text editor open ~/StarParse/StarParse.desktop
 * Line 3 for exec: replace with this. Then change out where it says USERNAME with your user name
 
