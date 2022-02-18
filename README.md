@@ -1,13 +1,14 @@
-# StarParse on Linux
-Instructions on installing StarParse on Linux machines using Wine
+# StarParse on Linux (Updated 2/17/22 - Works for SWToR 7.0 updates)
+Manual Instructions on installing StarParse on Linux machines using Wine, and Java
 
 ## Overview
-This guide is used to install and orchestrate the use of Ixale's StarParse. A combat log parser for Star Wars - The Old Republic. The intended use of this guide is for folks that migrated over to Linux, installed SWTOR through either steam or lutris. I found myself really missing StarParse in raiding the second I moved over. I built this guide trying to find the simplest way possible to get it up and running. I am sure that there are better ways of doing this. But this was the end result of what I had found at the time. I will be updating this as soon as I improve the method (possibly some scripting).
-
-* Additionally, an email was sent to Ixale directly to see if they would be able to buld out the Java packages in a linux port since really it shouldn't have any Windows Only dependencies. Hopefully the email didn't get autodeleted :P or thrown in spam. First time emailing so who knows.
+This guide is used to install and orchestrate the use of Ixale's StarParse. A combat log parser for Star Wars - The Old Republic. The intended use of this guide is for folks that migrated over to Linux, installed SWTOR through either steam or lutris. I found myself really missing StarParse in raiding the second I moved over. I built this guide trying to find the simplest way possible to get it up and running. I am sure that there are better ways of doing this. If you believe you have a better solution, please create an issue with examples, code, and instructions.
 
 ### Disclaimer:
 There is nothing official about this. It is a hackey workaround to get a third party app to function for a 10 year old game. If you break it, the onus is on you to fix it. Be a good 'puter person and make backups just in case. :P
+
+### Kudos
+* @EeVee0 - For showing me the light for java linux native.
 
 ### Requirements:
 * Ubuntu or similar debian based variant.
@@ -19,117 +20,100 @@ There is nothing official about this. It is a hackey workaround to get a third p
 * Winetricks (version 0.0+20210206-2 installed through Ubuntu Software app) 
   * Version shouldn't matter too much for this as we are using it for a single feature function.
 
+### Downloads - Ensure both of these are in your `~/Downloads` folder
+1) [Java](https://java.com/en/download/manual.jsp) - At the time of this article latest is: jre-8u321-linux-x64.tar.gz
+2) [StarParse](http://cdn.ixparse.com/dl/StarParse-1.0.exe)
+
 ### Contents:
-1)  Create Wine Bottle 
-2)  Install Java 
-3)  Install StarParse: Part 1 
-4)  Install StarParse: Part 2 
+1)  Create Temporary Wine Bottle & folder structure
+2)  Install StarParse: Part 1 - Extraction
+4)  Install StarParse: Part 2 - App Updater & Test Launch
 5)  Finalizing install and final shortcuts.
+------------------
 
-### 1. Create Wine Bottle
+### 1. Create Temporary Wine Bottle & folder structure
 
-I dislike installing everything in wine to ~.wine. Every build should have its own bottle so that you don't necessarily overwrite things or run into more compatibility issues. I am creating a folder inside the home directory called ~/.StarParse   . All files for this will be inside this directory going forward. Needs to be 64-bit installation as that is the archetecture that StarParse is. The below command also installs the fontsmooth-rgb winetricks pagage. This allows for anti-aliasing of the fonts. Nothing will be legible in the application otherwise. 
+Install Wine Bottle:
+* Command: `WINEARCH=win64 WINEPREFIX=~/.StarParse winetricks fontsmooth=rgb`
 
-* Command: `WINEARCH=win64 WINEPREFIX=~/.StarParse winetricks fontsmooth-rgb`
+Move Downloads to appropriate folder
+* Command: `mkdir ~/.StarParse/StarParse && cp ~/Downloads/StarParse-1.0.exe ~/.StarParse/StarParse && cp ~/Downloads/jre-8u321-linux-x64.tar.gz ~/.StarParse/StarParse && cd ~/.StarParse/StarParse && tar zxvf jre-8u321-linux-x64.tar.gz`
+* Note: I am making the Java Runtime local to the app itself for simplicity. Normally Java installs can be made local to the machine meaning all apps can use it. But it is easier for the guide to make it app specific for shortcuts, etc.
+------------------
 
-Navigate to the folder and make a new folder for some downloads. Note: this is just a personal preference of mine. I keep downloads so that I know the version numbers if I need to check for updates (for java). I don't do the whole auto-update with Java. Whole 'nother topic tho. The rest of this instruction assumes that you create the folder as listed.
-* Command: `mkdir ~/.StarParse/dls`
+### 2) Install StarParse: Part 1 - Extraction
+Start the installer via Wine.   HUGE NOTE:  This WILL fail. This is an intended result to extract the files from the installer. This is the hackey part of the workaround from this point forward. Once run and got the expected errors you can close out of the java applet that popped up. It should return you to the command prompt when done. If the command prompt is stuck on the System Error, it is safe to press:  ctl+c     in order to force out of the command.
 
-### 2) Install Java
-Download the latest Java Runtime. [Java](https://java.com/en/download/manual.jsp)
-* (At the time of this article: jre-8u311-windows-x64.exe)
-* Note that it needs to be 64-bit and the Windows variant. On the site it says that it is the Offline variant. Place that file into the folder you just created.
+* Command: `WINEPREFIX=~/.StarParse wine ~/.StarParse/StarParse/StarParse-1.0.exe`
 
-* Command: `cp ~/Downloads/jre-8u311-windows-x64.exe ~/.StarParse/dls/`
-* Command: `cd ~/.StarParse/dls`
+Remove some uneeded files
+* Command: `rm ~/Desktop/StarParse.lnk && rm ~/Desktop/StarParse.desktop`
 
-Starts the install file in silent mode. Please Note that you will see a bunch of terminal based errors on this. This is expected and most all of them are normal to installing something without clicking through it. (As far as I know, that is). The argument '/s' is for silent mode. It would normally pop up with a window with the usual java installer otherwise.
-* replace with your filename if the version is different
-* Command: `WINEPREFIX=~/.StarParse wine jre-8u311-windows-x64.exe /s`
+Move app files from inside wine to our folder
+* Command: `cp -R ~/.StarParse/drive_c/users/$USER/Local\ Settings/Application\ Data/StarParse/* ~/.StarParse/StarParse/`
+------------------
 
-### 3) Install StarParse: Part 1
-Download StarParse from Ixale's site and move the file into the same folder as the Java installer.
-[Ixale's StarParse](http://ixparse.com/)
-* Command: `cp ~/Downloads/StarParse-1.0.exe ~/.StarParse/dls/`
-* Command: `cd ~/StarParse/dls`
+### 3) Install StarParse: Part 2 - App Updater & Test Launch
 
-Start the installer via Wine.   HUGE NOTE:  This WILL fail. This is an intended result to run the application. This is the hackey part of the workaround from this point forward. Once run and got the expected errors you can close out of the java applet that popped up. It should return you to the command prompt when done. If the command prompt is stuck on the System Error, it is safe to press:  ctl+c     in order to force out of the command.
+Next we will be running the java app agaist the StarParse app updater to get the current app. You will see the StarParse applet launch and start downloading the update files. NOTE: At the end you will see an error trying to launch the app. This is intended as we will be launching the app seperately.
+* Command: `cd ~/.StarParse/StarParse/app`
+* Command: `~/.StarParse/StarParse/jre1.8.0_321/bin/java -jar starparse-launcher.jar`
+* Manually close out of the StarParse applet with the error message. The background terminal will exit back to the prompt. At the end of this, there will be a new folder in `~/.StarParse/StarParse/app` called `client` which houses the actual application.
 
-* Command: `WINEPREFIX=~/.StarParse wine StarParse-1.0.exe`
+Testing launch: At this point StarParse should load. You will see the changelog window pop up and can click through to the main app. YAY!
+* Command: `cd /home/$USER/.StarParse/StarParse/app/client/app && ~/.StarParse/StarParse/jre1.8.0_321/bin/java -jar starparse-client.jar`
 
-Explanation for the workaround:  Wine is normally used to run an app. Java is the app that we are going to be running so using wine to access StarParse is going to fail. Running Wine to run Java to run StarParse is what we are working towards.
+Close down StarParse App and remove the wine bottle we initially setup:
+* Command: `cd ~/.StarParse && rm -rf dosdevices && rm -rf drive_c && rm system.reg && rm user.reg && rm userdef.reg && rm winetricks.log && rm .update-timestamp`
 
-### 4) Install StarParse: Part 2
-Next we will be symlinking our app folder to where wine installed it so that we don't need to jump through the hoops of finding the nested folder structure (It gets waaaay too long.)
-* $USER is shorthand to whatever you are logged in as.
+------------------
 
-* Command: `ln -s ~/.StarParse/drive_c/users/$USER/Local\ Settings/Application\ Data/StarParse/app ~/.StarParse/`
+### 4) Finalizing install and final shortcuts. (WIP - Below is still old content that does not apply.)
 
-Now to make all the Linux people angry:    Please open file navigator (nautilus in Unbuntu) so that you can visually see the inside your home directory. You will need to enable hidden files in the view options so that you can see ~/.StarParse directory.
-* Double click on the 'app' folder and you should see a couple files and a lib folder. The application we are looking at is starparse-launcher.jar    this is the main startup application on first install. You should see a java icon. Right click on the file and  you should see:
+Remove Wine Bottle but keep our folders and structure
+* Command: `cd ~/.StarParse && rm -rf dosdevices && rm -rf drive_c && rm system.reg && rm user.reg && rm userdef.reg && rm winetricks.log && rm .update-timestamp`
+* Command: `cd ~/.local/share/applications/wine/Programs && rm -rf Ixale`
 
-`Open with Java(TM) Platform SE Binary`
 
-* If you don't see that choose "Open with Other Application". click view all and scroll through the list until you find it.
+Create files to be able to start and show app.
+* Command: `cd ~/.StarParse && touch StarParse.desktop && touch startStarParse.sh && chmod +x StarParse.desktop && chmod +x startStarParse.sh`
 
-Once you either double click the file or run it with Java (TM) Platform SE Binary you will see the initial application start to download updates. In the folder another folder is created called "Client". This is the end result that we will be accessing to run StarParse. Go ahead and close out of StarParse by clicking the 'x' in upper right like a normal windows app.
-
-### 5) Finalizing install and final shortcuts.
-Now we make another link to the main folder so that we can access the client folder directly. The previous one created is no longer necessary to keep a shortcut for as the main application is further down.  Additionally copy the icon file over to the base folder since it is no longer being used by anything.
-
-Remove Old Link
-* Command: `rm ~/.StarParse/app`
-
-Add New Link
-* Command: `ln -s ~/.StarParse/drive_c/users/$USER/Local\ Settings/Application\ Data/StarParse/app/client/app ~/.StarParse/`
-
-Get Icon File
-* Command: `cp ~/.StarParse/drive_c/users/$USER/Local\ Settings/Application\ Data/StarParse/StarParse.ico ~/.StarParse/`
-
-Getting rid of the java shortcut links installed in your applications directory <-Pet Peeve of mine
-* Command: `rm -R ~/.local/share/applications/wine/Programs/Java`
-
-Copying StarParse shortcut link to app folder
-* Command: `cp ~/.local/share/applications/wine/Programs/Ixale/StarParse.desktop ~/.StarParse`
-* Command: `rm -R ~/.local/share/applications/wine/Programs/Ixale`
-
-Using your favorite text editor open ~/StarParse/StarParse.desktop
-* Line 3 for exec: replace with this. Then change out where it says USERNAME with your user name
-
+Open `startStarParse.sh` with your favorite text editor and put in data. Then save and exit.:
 ```
-Exec=env WINEPREFIX="/home/USERNAME/.StarParse" wine-stable C:\\\\windows\\\\command\\\\start.exe /Unix /home/USERNAME/.StarParse/dosdevices/c:/users/USERNAME/Local\\ Settings/Application\\ Data/StarParse/app/client/app/starparse-client.jar
+#!/bin/bash
+
+cd "/home/$USER/.StarParse/StarParse/app/client/app"
+/.StarParse/StarParse/jre1.8.0_321/bin/java -jar starparse-client.jar
 ```
 
-Line 7 for Icon: replace with this. Then change out where it says USERNAME with your user name
-
-Line 7 = `Icon=/home/USERNAME/.StarParse/StarParse.ico`
-
-The overall file will look like this but with USERNAME replaced.
+Open `StarParse.desktop` with your favorite text editor and put in data.Then save and exit:
+* Note: Where it has `<user>` you will need to put in your linux user name
 ```
 [Desktop Entry]
 Name=StarParse
-Exec=env WINEPREFIX="/home/USERNAME/.StarParse" wine-stable C:\\\\windows\\\\command\\\\start.exe /Unix /home/USERNAME/.StarParse/dosdevices/c:/users/USERNAME/Local\\ Settings/Application\\ Data/StarParse/app/client/app/starparse-client.jar
+Exec=nohup /home/<user>/.StarParse/startStarParse.sh &
 Type=Application
+Terminal=false
 StartupNotify=true
-Path=/home/USERNAME/.StarParse/dosdevices/c:/users/USERNAME/Local Settings/Application Data/StarParse
-Icon=/home/USERNAME/.StarParse/StarParse.ico
-StartupWMClass=starparse.exe
+Path=/home/<user>/.StarParse/
+Icon=/home/<user>/.StarParse/StarParse/StarParse.ico
+StartupWMClass=com.ixale.starparse.gui.StarparseApp
 ```
 
-* Once you save this. Right click on the StarParse.desktop file with nautilus/ File explorer and choose Properties -> permissions. Check the box that says: Allow executing file as a Program
+Copy `StarParse.desktop` file to where OS can read it:
+* Command: `cp ~/.StarParse/StarParse.desktop ~/.local/share/applications/`
 
-* Copy it to your applications directory
-Command: `cp ~/.StarParse/StarParse.desktop ~/.local/share/applications/`
-
+Check your applications in your app launcher.
 * Open your applications menu and you should see the file with the appropriate icon. Click on it to ensure that it works.
-* The last thing that you need to do is find out where your combat logs are being stored in either steam or in Lutris. 
+
+The last thing that you need to do is find out where your combat logs are being stored in either steam or in Lutris. 
 
 In StarParse click File -> Settings -> In Log Directory Click Choose and it will open a popup.
 In the popup you are going to navigate to one of two default locations depending on how you installed SWTOR
 * Lutris default location: `~/Games/Star\ Wars\ -\ The\ Old\ Republic`
 * Steam default location: `~/.steam/debian-installation/steamapps/compatdata/1286830/pfx`
 * Open the respective applications either Steam or Lutris and find out where the install locations are if you are unsure. Navigate to them using the StarParse Browse Popup.
-* Once you start to see drive_c it will be the same in both apps. (caveat - steams USERNAME is steamuser, Lutris will be yours specifically)
+* Note: Once you start to see drive_c it will be the same in both apps. (caveat - steams USERNAME is steamuser, Lutris will be yours specifically)
 
 `WHEREVERINSTALLED/drive_c/users/USERNAME/Documents/Star\ Wars\ -\ The\ Old\ Republic/CombatLogs`
 
