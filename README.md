@@ -70,6 +70,11 @@ Close down StarParse App and remove the wine bottle we initially setup:
 
 ### 4) Finalizing install and final shortcuts. (WIP - Below is still old content that does not apply.)
 
+Remove Wine Bottle but keep our folders and structure
+* Command: `cd ~/.StarParse && rm -rf dosdevices && rm -rf drive_c && rm system.reg && rm user.reg && rm userdef.reg && rm winetricks.log && rm .update-timestamp`
+* Command: `cd ~/.local/share/applications/wine/Programs && rm -rf Ixale`
+
+
 Create files to be able to start and show app.
 * Command: `cd ~/.StarParse && touch StarParse.desktop && touch startStarParse.sh && chmod +x StarParse.desktop && chmod +x startStarParse.sh`
 
