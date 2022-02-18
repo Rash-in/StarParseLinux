@@ -91,54 +91,29 @@ Open `StarParse.desktop` with your favorite text editor and put in data.Then sav
 ```
 [Desktop Entry]
 Name=StarParse
-Exec=/home/<user>/.StarParse/java/jre1.8.0_321/bin/java -jar /home/<user>/.StarParse/app/StarParse/client/app/starparse-client.jar
+Exec=nohup /home/<user>/.StarParse/startStarParse.sh &
 Type=Application
+Terminal=false
 StartupNotify=true
-Path=/home/<user>/.StarParse/app/StarParse/client/app/starparse-client.jar
-Icon=/home/<user>/.StarParse/app/StarParse/StarParse.ico
+Path=/home/<user>/.StarParse/
+Icon=/home/<user>/.StarParse/StarParse/StarParse.ico
+StartupWMClass=com.ixale.starparse.gui.StarparseApp
 ```
 
 Copy `StarParse.desktop` file to where OS can read it:
-* Command: `cp ~/.StarParse/StarParse.desktop ~/.local/share/applications`
+* Command: `cp ~/.StarParse/StarParse.desktop ~/.local/share/applications/`
 
----------------------------------------------------------------
-Using your favorite text editor open ~/StarParse/StarParse.desktop
-* Line 3 for exec: replace with this. Then change out where it says USERNAME with your user name
-
-```
-Exec=env WINEPREFIX="/home/USERNAME/.StarParse" wine-stable C:\\\\windows\\\\command\\\\start.exe /Unix /home/USERNAME/.StarParse/dosdevices/c:/users/USERNAME/Local\\ Settings/Application\\ Data/StarParse/app/client/app/starparse-client.jar
-```
-
-Line 7 for Icon: replace with this. Then change out where it says USERNAME with your user name
-
-Line 7 = `Icon=/home/USERNAME/.StarParse/StarParse.ico`
-
-The overall file will look like this but with USERNAME replaced.
-```
-[Desktop Entry]
-Name=StarParse
-Exec=env WINEPREFIX="/home/USERNAME/.StarParse" wine-stable C:\\\\windows\\\\command\\\\start.exe /Unix /home/USERNAME/.StarParse/dosdevices/c:/users/USERNAME/Local\\ Settings/Application\\ Data/StarParse/app/client/app/starparse-client.jar
-Type=Application
-StartupNotify=true
-Path=/home/USERNAME/.StarParse/dosdevices/c:/users/USERNAME/Local Settings/Application Data/StarParse
-Icon=/home/USERNAME/.StarParse/StarParse.ico
-StartupWMClass=starparse.exe
-```
-
-* Once you save this. Right click on the StarParse.desktop file with nautilus/ File explorer and choose Properties -> permissions. Check the box that says: Allow executing file as a Program
-
-* Copy it to your applications directory
-Command: `cp ~/.StarParse/StarParse.desktop ~/.local/share/applications/`
-
+Check your applications in your app launcher.
 * Open your applications menu and you should see the file with the appropriate icon. Click on it to ensure that it works.
-* The last thing that you need to do is find out where your combat logs are being stored in either steam or in Lutris. 
+
+The last thing that you need to do is find out where your combat logs are being stored in either steam or in Lutris. 
 
 In StarParse click File -> Settings -> In Log Directory Click Choose and it will open a popup.
 In the popup you are going to navigate to one of two default locations depending on how you installed SWTOR
 * Lutris default location: `~/Games/Star\ Wars\ -\ The\ Old\ Republic`
 * Steam default location: `~/.steam/debian-installation/steamapps/compatdata/1286830/pfx`
 * Open the respective applications either Steam or Lutris and find out where the install locations are if you are unsure. Navigate to them using the StarParse Browse Popup.
-* Once you start to see drive_c it will be the same in both apps. (caveat - steams USERNAME is steamuser, Lutris will be yours specifically)
+* Note: Once you start to see drive_c it will be the same in both apps. (caveat - steams USERNAME is steamuser, Lutris will be yours specifically)
 
 `WHEREVERINSTALLED/drive_c/users/USERNAME/Documents/Star\ Wars\ -\ The\ Old\ Republic/CombatLogs`
 
