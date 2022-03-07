@@ -68,7 +68,7 @@ Close down StarParse App and remove the wine bottle we initially setup:
 
 ------------------
 
-### 4) Finalizing install and final shortcuts. (WIP - Below is still old content that does not apply.)
+### 4) Finalizing install and final shortcuts.
 
 Remove Wine Bottle but keep our folders and structure
 * Command: `cd ~/.StarParse && rm -rf dosdevices && rm -rf drive_c && rm system.reg && rm user.reg && rm userdef.reg && rm winetricks.log && rm .update-timestamp`
