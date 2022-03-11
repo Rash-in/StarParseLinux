@@ -27,11 +27,12 @@ There is nothing official about this. It is a hackey workaround to get a third p
 ### Contents:
 1)  Create Temporary Wine Bottle & folder structure
 2)  Install StarParse: Part 1 - Extraction
-4)  Install StarParse: Part 2 - App Updater & Test Launch
-5)  Finalizing install and final shortcuts.
+3)  Install StarParse: Part 2 - App Updater & Test Launch
+4)  Finalizing install and final shortcuts.
+5)  Addendum: Fonts and Font Sizes
 ------------------
 
-### 1. Create Temporary Wine Bottle & folder structure
+### 1) Create Temporary Wine Bottle & folder structure
 
 Install Wine Bottle:
 * Command: `WINEARCH=win64 WINEPREFIX=~/.StarParse winetricks fontsmooth=rgb`
@@ -82,7 +83,7 @@ Open `startStarParse.sh` with your favorite text editor and put in data. Then sa
 ```
 #!/bin/bash
 
-cd "/home/$USER/.StarParse/StarParse/app/client/app"
+cd "/home/$USER/.StarParse/StarParse/app/client/app" &&
 /.StarParse/StarParse/jre1.8.0_321/bin/java -jar starparse-client.jar
 ```
 
@@ -116,5 +117,47 @@ In the popup you are going to navigate to one of two default locations depending
 * Note: Once you start to see drive_c it will be the same in both apps. (caveat - steams USERNAME is steamuser, Lutris will be yours specifically)
 
 `WHEREVERINSTALLED/drive_c/users/USERNAME/Documents/Star\ Wars\ -\ The\ Old\ Republic/CombatLogs`
+
+------------------
+
+### 5) Addendum: Fonts and Font Sizes
+When you start parsing, you will quickly notice that the font size is making viewing the numbers difficult to read on the side panel as well as the overlay. This is an issue with default fonts and font sizes with Java. There is a fix for this. Of course this is optional and will continue to work without it. But if you are like me and it makes you cringe like a fedora wearing katana wielding neckbeard to see it; Use the below steps
+
+Use package manager to install TTF Fonts.
+* Command: `sudo apt get install ttf-mscorefonts-installer`
+
+Using your favorite text editor (needs admin rights), edit the font definitions file:
+* Location: `/etc/fonts/conf.avail/60-latin.conf`
+
+This part is a little tedious. You will need to add 3 lines to this file. There are 3 groups in this file. `serif`, `sans-serif`, and `monospace`. Each of these will have a `<prefer>` block. The top spot of the prefer block is where you will need to make your addition.
+
+* For the `serif` family, add the top prefer line as:
+`<family>Times New Roman</family>`
+
+* For the `sans-serif` family, add the top prefer line as:
+`<family>Arial</family>`
+
+* For the `monospace` family, add the top prefer line as:
+`<family>Courier New</family>`
+
+* A snippit of what the first edit looked like after the change.
+```
+  <description>Set preferable fonts for Latin</description>
+        <alias>
+                <family>serif</family>
+                <prefer>
+                        <family>Times New Roman</family>   <--I added this line
+                        <family>DejaVu Serif</family>
+                        <family>Bitstream Vera Serif</famil
+```
+
+Save and close the text editor. We will need to apply the new config in order for it to take affect.
+* Command: `sudo dpkg-reconfigure fontconfig`
+* Close StarParse and re-launch.
+
+------------------
+
+### 6) Addendum: Overlays
+For whatever reason, I am unable to get overlays to stay running on top of the window. They work, but will move to the background (behind the game). I am still working to see if there is a fix for this. Add an issue to this git if you know.
 
 ## Fin
