@@ -25,11 +25,12 @@ There is nothing official about this. It is a hackey workaround to get a third p
 2) [StarParse](http://cdn.ixparse.com/dl/StarParse-1.0.exe)
 
 ### Contents:
-1)  Create Temporary Wine Bottle & folder structure
-2)  Install StarParse: Part 1 - Extraction
-3)  Install StarParse: Part 2 - App Updater & Test Launch
-4)  Finalizing install and final shortcuts.
-5)  Addendum: Fonts and Font Sizes
+1)  [Create Temporary Wine Bottle & folder structure](#1-create-temporary-wine-bottle--folder-structure)
+2)  [Install StarParse: Part 1 - Extraction](#2-install-starparse-part-1---extraction)
+3)  [Install StarParse: Part 2 - App Updater & Test Launch](#3-install-starparse-part-2---app-updater--test-launch)
+4)  [Finalizing install and final shortcuts](#4-finalizing-install-and-final-shortcuts)
+5)  [Addendum: Fonts and Font Sizes](#5-addendum-fonts-and-font-sizes)
+6)  [Addendum: Overlays](#6-addendum-overlays)
 ------------------
 
 ### 1) Create Temporary Wine Bottle & folder structure
@@ -158,6 +159,11 @@ Save and close the text editor. We will need to apply the new config in order fo
 ------------------
 
 ### 6) Addendum: Overlays
-For whatever reason, I am unable to get overlays to stay running on top of the window. They work, but will move to the background (behind the game). I am still working to see if there is a fix for this. Add an issue to this git if you know.
+* In StarParse open the interface you are trying to use for the overlay - stats, timer, raid HoTs, etc
+* Click the window so that it is the window in focus
+* Keypress: `alt + space`
+* In the context menu select Always on Top
+* Move the overlay window to where you want it while game is running.
+* Optional: lock overlays from the interface menu on StarParse.
 
 ## Fin
