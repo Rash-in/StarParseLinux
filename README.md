@@ -88,7 +88,7 @@ Open `startStarParse.sh` with your favorite text editor and put in data. Then sa
 #!/bin/bash
 
 cd "/home/$USER/.StarParse/StarParse/app/client/app" &&
-/.StarParse/StarParse/jre1.8.0_321/bin/java -jar starparse-client.jar
+nohup /home/$USER/.StarParse/StarParse/jre1.8.0_321/bin/java -jar starparse-client.jar & 2> /dev/null;exit;
 ```
 
 Open `StarParse.desktop` with your favorite text editor and put in data.Then save and exit:
