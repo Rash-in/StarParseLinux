@@ -158,7 +158,8 @@ Save and close the text editor. We will need to apply the new config in order fo
 
 ------------------
 
-### 6) Addendum: Overlays
+### 6) Addendum: Overlays (Gnome)
+Note: For KDE, look [here](https://github.com/Rash-in/StarParseLinux/wiki/Overlays-with-KDE)
 * In StarParse open the interface you are trying to use for the overlay - stats, timer, raid HoTs, etc
 * Click the window so that it is the window in focus
 * Keypress: `alt + space`
