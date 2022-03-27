@@ -4,6 +4,8 @@ Manual Instructions on installing StarParse on Linux machines using Wine, and Ja
 ## Overview
 This guide is used to install and orchestrate the use of Ixale's StarParse. A combat log parser for Star Wars - The Old Republic. The intended use of this guide is for folks that migrated over to Linux, installed SWTOR through either steam or lutris. I found myself really missing StarParse in raiding the second I moved over. I built this guide trying to find the simplest way possible to get it up and running. I am sure that there are better ways of doing this. If you believe you have a better solution, please create an issue with examples, code, and instructions.
 
+[Misc. Addendums](https://github.com/Rash-in/StarParseLinux/wiki/Misc-Wiki-Index)
+
 ### Disclaimer:
 There is nothing official about this. It is a hackey workaround to get a third party app to function for a 10 year old game. If you break it, the onus is on you to fix it. Be a good 'puter person and make backups just in case. :P
 
