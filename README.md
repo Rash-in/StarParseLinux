@@ -7,6 +7,9 @@ This guide is used to install and orchestrate the use of Ixale's StarParse. A co
 ### Disclaimer:
 There is nothing official about this. It is a hackey workaround to get a third party app to function for a 10 year old game. If you break it, the onus is on you to fix it. Be a good 'puter person and make backups just in case. :P
 
+### Updates:
+This walkthrough is meant for first time installation. If you are re-installing StarParse based on the previous instructions. Or just cleaning house and starting over, I would recommend the easiest option which is prior to starting the below instructions, delete the `~/.StarParse` folder. That will wipe everything out that was done previous. At the end of this walkthrough, you will have to re-add your raid groups, and any timers that you manually entered, but you should have those noted down somewhere first **(HINT HINT WINK WINK)**
+
 ### Kudos
 * @EeVee0 - For showing me the light for java linux native.
 
