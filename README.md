@@ -1,4 +1,4 @@
-# StarParse on Linux (Updated 3/27/22 - Works for SWToR 7.0 updates)
+# StarParse on Linux (Updated 4/10/22 - Works for SWToR 7.0 updates)
 Manual Instructions on installing StarParse on Linux machines using Wine, and Java
 
 ## Overview
@@ -66,6 +66,7 @@ Next we will be running the java app agaist the StarParse app updater to get the
 * Command: `cd ~/.StarParse/StarParse/app`
 * Command: `~/.StarParse/StarParse/jre1.8.0_321/bin/java -jar starparse-launcher.jar`
 * Manually close out of the StarParse applet with the error message. The background terminal will exit back to the prompt. At the end of this, there will be a new folder in `~/.StarParse/StarParse/app` called `client` which houses the actual application.
+* Ensure file permissions are yours - Command: `chown -R $USER:$USER ~/.StarParse`
 
 Testing launch: At this point StarParse should load. You will see the changelog window pop up and can click through to the main app. YAY!
 * Command: `cd /home/$USER/.StarParse/StarParse/app/client/app && ~/.StarParse/StarParse/jre1.8.0_321/bin/java -jar starparse-client.jar`
