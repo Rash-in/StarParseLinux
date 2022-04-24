@@ -6,6 +6,11 @@ This guide is used to install and orchestrate the use of Ixale's StarParse. A co
 
 [Misc. Addendums](https://github.com/Rash-in/StarParseLinux/wiki/Misc-Wiki-Index)
 
+### High Level Overview:
+- Use wine to pull the StarParse application out of the .exe
+- Use java to initially run the StarParse Updater that is built in.
+- Finally, use java to run the client application
+
 ### Disclaimer:
 There is nothing official about this. It is a hackey workaround to get a third party app to function for a 10 year old game. If you break it, the onus is on you to fix it. Be a good 'puter person and make backups just in case. :P
 
@@ -26,8 +31,9 @@ This walkthrough is meant for first time installation. If you are re-installing 
   * Version shouldn't matter too much for this as we are using it for a single feature function.
 
 ### Downloads - Ensure both of these are in your `~/Downloads` folder
-1) [Java](https://java.com/en/download/manual.jsp) - At the time of this article latest is: jre-8u321-linux-x64.tar.gz
-2) [StarParse](http://cdn.ixparse.com/dl/StarParse-1.0.exe)
+1) [Java](https://java.com/en/download/manual.jsp) - At the time of this article latest is: jre-8u321-linux-**x64**.tar.gz
+      - Note: Please make sure that it is the x64 version of java. It will say it at the end of the file name before the extension
+3) [StarParse](http://cdn.ixparse.com/dl/StarParse-1.0.exe)
 
 ### Contents:
 1)  [Create Temporary Wine Bottle & folder structure](#1-create-temporary-wine-bottle--folder-structure)
@@ -35,7 +41,7 @@ This walkthrough is meant for first time installation. If you are re-installing 
 3)  [Install StarParse: Part 2 - App Updater & Test Launch](#3-install-starparse-part-2---app-updater--test-launch)
 4)  [Finalizing install and final shortcuts](#4-finalizing-install-and-final-shortcuts)
 5)  [Addendum: Fonts and Font Sizes](#5-addendum-fonts-and-font-sizes)
-6)  [Addendum: Overlays](#6-addendum-overlays)
+6)  [Addendum: Overlays](#6-addendum-overlays-gnome)
 ------------------
 
 ### 1) Create Temporary Wine Bottle & folder structure
@@ -71,8 +77,7 @@ Next we will be running the java app agaist the StarParse app updater to get the
 Testing launch: At this point StarParse should load. You will see the changelog window pop up and can click through to the main app. YAY!
 * Command: `cd /home/$USER/.StarParse/StarParse/app/client/app && ~/.StarParse/StarParse/jre1.8.0_321/bin/java -jar starparse-client.jar`
 
-Close down StarParse App and remove the wine bottle we initially setup:
-* Command: `cd ~/.StarParse && rm -rf dosdevices && rm -rf drive_c && rm system.reg && rm user.reg && rm userdef.reg && rm winetricks.log && rm .update-timestamp`
+Close down StarParse App and will start to wrap things up
 
 ------------------
 
@@ -124,7 +129,8 @@ In the popup you are going to navigate to one of two default locations depending
 * Note: Once you start to see drive_c it will be the same in both apps. (caveat - steams USERNAME is steamuser, Lutris will be yours specifically)
 
 `WHEREVERINSTALLED/drive_c/users/USERNAME/Documents/Star\ Wars\ -\ The\ Old\ Republic/CombatLogs`
-
+- If you do see The Star Wars folder but not CombatLogs, you will need to go in-game, turn on combat logging from the preferences, and go whack something with a stick so that you have at least one started log.
+http://ixparse.com/img/swtor-combat-logging.png
 ------------------
 
 ### 5) Addendum: Fonts and Font Sizes
