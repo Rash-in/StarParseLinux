@@ -1,5 +1,6 @@
 # StarParse on Linux (Updated 4/24/22 - Works for SWToR 7.0 updates)
 Manual Instructions on installing StarParse on Linux machines using Wine, and Java
+Edit: Confirmed still working as of 10/21/24 with latest swtor patch.
 
 ## Overview
 This guide is used to install and orchestrate the use of Ixale's StarParse. A combat log parser for Star Wars - The Old Republic. The intended use of this guide is for folks that migrated over to Linux, installed SWTOR through either steam or lutris. I found myself really missing StarParse in raiding the second I moved over. I built this guide trying to find the simplest way possible to get it up and running. I am sure that there are better ways of doing this. If you believe you have a better solution, please create an issue with examples, code, and instructions.
