@@ -1,5 +1,6 @@
-# StarParse on Linux (Updated 4/24/22 - Works for SWToR 7.0 updates)
+# StarParse on Linux (Updated 10/21/24 - Works for SWToR 7.0 updates)
 Manual Instructions on installing StarParse on Linux machines using Wine, and Java
+
 Edit: Confirmed still working as of 10/21/24 with latest swtor patch.
 
 ## Overview
